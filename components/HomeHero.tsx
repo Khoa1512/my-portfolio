@@ -18,7 +18,7 @@ const HomeHero = () => {
 
   return (
     <section className='relative py-16 md:py-16 lg:py-28 xl:py-30 3xl:py-44 overflow-hidden'>
-      <div className='container flex flex-col items-center text-center'>
+      <div className='container flex flex-col max-w-screen-2xl mx-auto items-center text-center justify-center'>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
