@@ -11,8 +11,9 @@ import {
 } from '@/components/ui/card';
 import { Button } from './ui/button';
 import Link from 'next/link';
+import { featuredSkills } from '@/lib/data';
 
-import { skills } from '@/lib/database/index';
+
 
 // Ánh xạ tên icon sang component icon
 const iconMap: Record<string, LucideIcon> = {
@@ -24,9 +25,6 @@ const iconMap: Record<string, LucideIcon> = {
 const HomeSkill = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  // Chỉ lấy 3 kỹ năng đầu tiên để hiển thị
-  const featuredSkills = skills.slice(0, 3);
 
   // Render icon component dựa trên tên icon
   const renderIcon = (iconName: string) => {

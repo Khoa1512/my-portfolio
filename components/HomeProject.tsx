@@ -13,7 +13,8 @@ import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { featuredProjects } from '@/lib/database/index';
+import { featuredProjects } from '@/lib/data';
+
 
 const HomeProject = () => {
   const ref = useRef(null);
@@ -84,30 +85,7 @@ const HomeProject = () => {
                       </span>
                     ))}
                   </div>
-                  <div className='mt-6 flex space-x-4'>
-                    {project.link && (
-                      <Button size='sm' asChild>
-                        <Link
-                          href={project.link}
-                          target='_blank'
-                          rel='noopener noreferrer'
-                        >
-                          Live Demo
-                        </Link>
-                      </Button>
-                    )}
-                    {project.github && (
-                      <Button size='sm' variant='outline' asChild>
-                        <Link
-                          href={project.github}
-                          target='_blank'
-                          rel='noopener noreferrer'
-                        >
-                          GitHub
-                        </Link>
-                      </Button>
-                    )}
-                  </div>
+
                 </CardContent>
               </Card>
             </motion.div>

@@ -22,8 +22,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { skills } from '@/lib/data';
 
-import { skills } from '@/lib/database/index';
+
 
 // Ánh xạ tên icon sang component icon
 const iconMap: Record<string, LucideIcon> = {

@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { allProjects } from '@/lib/database/index';
+
 import { Button } from './ui/button';
 import {
   Card,
@@ -13,6 +13,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { allProjects } from '@/lib/data';
 
 const ProjectSection = () => {
   const ref = useRef(null);
@@ -78,30 +79,6 @@ const ProjectSection = () => {
                       {tag}
                     </span>
                   ))}
-                </div>
-                <div className='mt-6 flex space-x-4'>
-                  {project.link && (
-                    <Button size='sm' asChild>
-                      <Link
-                        href={project.link}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        Live Demo
-                      </Link>
-                    </Button>
-                  )}
-                  {project.github && (
-                    <Button size='sm' variant='outline' asChild>
-                      <Link
-                        href={project.github}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                      >
-                        GitHub
-                      </Link>
-                    </Button>
-                  )}
                 </div>
               </CardContent>
             </Card>
