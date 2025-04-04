@@ -35,7 +35,7 @@ const HomeHero = () => {
             I create beautiful, responsive, and user-friendly websites and
             mobiles with modern technologies.
           </p>
-          <div className='flex flex-col sm:flex-row gap-4 mt-6 md:mt-8 lg:mt-10 xl:mt-10 3xl:mt-12 justify-center'>
+          <div className='flex flex-col sm:flex-row gap-4 mt-6 md:mt-8 lg:mt-10 xl:mt-10 3xl:mt-12 justify-center mb-16 sm:mb-6'>
             <Button
               asChild
               size='lg'
@@ -58,13 +58,13 @@ const HomeHero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className='absolute bottom-6 md:bottom-8 lg:bottom-10 xl:bottom-10 3xl:bottom-16 left-1/2 transform -translate-x-1/2'
+        className='absolute flex justify-center items-center bottom-0 sm:bottom-4 md:bottom-8 lg:bottom-10 xl:bottom-10 3xl:bottom-16 left-1/2 transform -translate-x-1/2 pb-4 sm:pb-0'
       >
         <Link
           href='#about-preview'
           className='flex flex-col items-center text-muted-foreground hover:text-foreground transition-colors'
         >
-          <span className='text-sm md:text-base lg:text-lg xl:text-lg 3xl:text-2xl mb-2 3xl:mb-4'>
+          <span className='hidden sm:inline text-sm md:text-base lg:text-lg xl:text-lg 3xl:text-2xl mb-2 3xl:mb-4'>
             Scroll Down
           </span>
           <ArrowDown className='animate-[bounce_2s_ease-in-out_infinite] w-6 h-6 md:w-8 md:h-8 3xl:w-12 3xl:h-12' />
