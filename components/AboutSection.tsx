@@ -56,8 +56,8 @@ const AboutSection = () => {
               <CardContent className='p-4 flex items-center gap-3'>
                 <GraduationCap className='text-[#a855f7]' />
                 <div>
-                  <p className='text-sm font-medium'>Education</p>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm xl:text-base font-medium'>Education</p>
+                  <p className='text-sm xl:text-base text-muted-foreground'>
                     Ton Duc Thang University
                   </p>
                 </div>
@@ -67,8 +67,10 @@ const AboutSection = () => {
               <CardContent className='p-4 flex items-center gap-3'>
                 <Calendar className='text-[#a855f7]' />
                 <div>
-                  <p className='text-sm font-medium'>Experience</p>
-                  <p className='text-sm text-muted-foreground'>2+ Years</p>
+                  <p className='text-sm xl:text-base font-medium'>Experience</p>
+                  <p className='text-sm xl:text-base text-muted-foreground'>
+                    2+ Years
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -76,8 +78,8 @@ const AboutSection = () => {
               <CardContent className='p-4 flex items-center gap-3'>
                 <MapPin className='text-[#a855f7]' />
                 <div>
-                  <p className='text-sm font-medium'>Location</p>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm xl:text-base font-medium'>Location</p>
+                  <p className='text-sm xl:text-base text-muted-foreground'>
                     Ho Chi Minh, Viet Nam
                   </p>
                 </div>
@@ -87,8 +89,10 @@ const AboutSection = () => {
               <CardContent className='p-4 flex items-center gap-3'>
                 <Briefcase className='text-[#a855f7]' />
                 <div>
-                  <p className='text-sm font-medium'>Availability</p>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm xl:text-base font-medium'>
+                    Availability
+                  </p>
+                  <p className='text-sm xl:text-base text-muted-foreground'>
                     Seeking an internship
                   </p>
                 </div>
@@ -98,9 +102,15 @@ const AboutSection = () => {
 
           <Tabs defaultValue='Education' className='w-full pr-4'>
             <TabsList className='grid w-full grid-cols-3'>
-              <TabsTrigger value='education'>Education</TabsTrigger>
-              <TabsTrigger value='experience'>Experience</TabsTrigger>
-              <TabsTrigger value='interests'>Interests</TabsTrigger>
+              <TabsTrigger value='education'>
+                Education
+              </TabsTrigger>
+              <TabsTrigger value='experience'>
+                Experience
+              </TabsTrigger>
+              <TabsTrigger value='interests'>
+                Interests
+              </TabsTrigger>
             </TabsList>
             <TabsContent value='education' className='space-y-4 mt-4'>
               <div className='border-l-2 border-[#a855f7] pl-4 py-2'>
