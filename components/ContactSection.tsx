@@ -1,25 +1,26 @@
-"use client";
+'use client';
 
-import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
+import { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import {
   Mail,
   MapPin,
   Phone,
   Send,
   Github,
-  Gitlab,
   Linkedin,
-  Twitter,
   Facebook,
   Instagram,
-} from "lucide-react";
+  Loader2,
+  LucideIcon,
+} from 'lucide-react';
+import { toast } from 'sonner';
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import {
   Form,
   FormControl,
@@ -27,92 +28,84 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-
-
-const formSchema = z.object({
-  name: z.string().min(2, {
-    message: "Name must be at least 2 characters.",
-  }),
-  email: z.string().email({
-    message: "Please enter a valid email address.",
-  }),
-  subject: z.string().min(5, {
-    message: "Subject must be at least 5 characters.",
-  }),
-  message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
-  }),
-});
+} from '@/components/ui/form';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { formSchema } from '@/lib/validators';
+import { contactInfo, socialLinks } from '@/lib/contact-data';
 
 const ContactSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Icon mapping
+  const iconMap: Record<string, LucideIcon> = {
+    Mail,
+    MapPin,
+    Phone,
+    Github,
+    Facebook,
+    Linkedin,
+    Instagram,
+  };
+
+  // Function to render icon based on iconName
+  const renderIcon = (iconName: string, className: string) => {
+    const IconComponent = iconMap[iconName];
+    if (!IconComponent) return null;
+    return <IconComponent className={className} />;
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    // toast({
-    //   title: "Message sent!",
-    //   description: "Thank you for your message. I'll get back to you soon.",
-    // });
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      setIsSubmitting(true);
+
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('Message sent!', {
+          description: "Thank you for your message. I'll get back to you soon.",
+          duration: 5000,
+          action: {
+            label: 'Close',
+            onClick: () => toast.dismiss(),
+          },
+        });
+        form.reset();
+      } else {
+        toast.error('Error', {
+          description:
+            data.error || 'Failed to send message. Please try again later.',
+        });
+      }
+    } catch (error) {
+      toast.error('Error', {
+        description: 'An unexpected error occurred. Please try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
-  const contactInfo = [
-    {
-      icon: <Mail className='h-6 w-6 text-[#a855f7]' />,
-      title: "Email",
-      value: "danggkhoaa1512@gmail.com",
-      link: "mailto:danggkhoaa1512@gmail.com",
-    },
-    {
-      icon: <Phone className='h-6 w-6 text-[#a855f7]' />,
-      title: "Phone",
-      value: "+84344117735",
-      link: "tel:+84344117735",
-    },
-    {
-      icon: <MapPin className='h-6 w-6 text-[#a855f7]' />,
-      title: "Location",
-      value: "Ho Chi Minh, Viet Nam",
-      link: "#",
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: <Github className='h-6 w-6' />,
-      name: "GitHub",
-      link: "https://github.com/Khoa1512",
-    },
-    {
-      icon: <Facebook className='h-6 w-6' />,
-      name: "Facebook",
-      link: "https://www.facebook.com/khoaaa152/",
-    },
-    {
-      icon: <Linkedin className='h-6 w-6' />,
-      name: "LinkedIn",
-      link: "https://www.linkedin.com/in/kelvindev1512/",
-    },
-    {
-      icon: <Instagram className='h-6 w-6' />,
-      name: "Instagram",
-      link: "https://www.instagram.com/khoaaaa__152/",
-    },
-  ];
   return (
     <section className='py-8'>
       <div ref={ref} className='grid md:grid-cols-3 gap-8 px-6'>
@@ -133,7 +126,9 @@ const ContactSection = () => {
           {contactInfo.map((info, index) => (
             <Card key={index}>
               <CardContent className='p-6 flex items-start gap-4'>
-                <div className='mt-1'>{info.icon}</div>
+                <div className='mt-1'>
+                  {renderIcon(info.iconName, 'h-6 w-6 text-[#a855f7]')}
+                </div>
                 <div>
                   <h3 className='font-medium'>{info.title}</h3>
                   <a
@@ -159,7 +154,7 @@ const ContactSection = () => {
                   className='p-3 bg-muted rounded-full hover:bg-[#a855f7]/10 transition-colors'
                   aria-label={social.name}
                 >
-                  {social.icon}
+                  {renderIcon(social.iconName, 'h-6 w-6')}
                 </a>
               ))}
             </div>
@@ -240,9 +235,22 @@ const ContactSection = () => {
                       </FormItem>
                     )}
                   />
-                  <Button type='submit' className='w-full'>
-                    <Send className='mr-2 h-4 w-4' />
-                    Send Message
+                  <Button
+                    type='submit'
+                    className='w-full'
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className='mr-2 h-4 w-4 animate-spin' />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className='mr-2 h-4 w-4' />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </form>
               </Form>
