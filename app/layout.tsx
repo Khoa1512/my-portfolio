@@ -27,7 +27,7 @@ const fontHeading = FontHeading({
 });
 
 export const metadata = {
-  title: "Portfolio - Final Year Student",
+  title: "Portfolio - Kelvin",
   description: "A portfolio website showcasing my skills and projects",
 };
 
