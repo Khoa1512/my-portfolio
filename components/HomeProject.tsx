@@ -13,27 +13,11 @@ import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { featuredProjects } from '@/lib/database/index';
 
 const HomeProject = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const featuredProjects = [
-    {
-      title: 'E-Commerce Website',
-      description:
-        'A full-featured e-commerce platform with product listings, cart functionality, and payment integration.',
-      image: '/ecommerce.jpg',
-      tags: ['Next.js', 'Tailwind CSS'],
-    },
-    {
-      title: 'Task Management App',
-      description:
-        'A productivity application for managing tasks, projects, and deadlines with team collaboration features.',
-      image: '/ecommerce.jpg',
-      tags: ['React', 'Firebase'],
-    },
-  ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -99,6 +83,30 @@ const HomeProject = () => {
                         {tag}
                       </span>
                     ))}
+                  </div>
+                  <div className='mt-6 flex space-x-4'>
+                    {project.link && (
+                      <Button size='sm' asChild>
+                        <Link
+                          href={project.link}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                        >
+                          Live Demo
+                        </Link>
+                      </Button>
+                    )}
+                    {project.github && (
+                      <Button size='sm' variant='outline' asChild>
+                        <Link
+                          href={project.github}
+                          target='_blank'
+                          rel='noopener noreferrer'
+                        >
+                          GitHub
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
