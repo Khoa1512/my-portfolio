@@ -130,7 +130,7 @@ export const allProjects: ProjectItem[] = [
     tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB", "Redux"],
     liveUrl: "https://ecom-bice.vercel.app/",
     githubUrl: "#",
-    date: "January 2023",
+    date: "January 2024",
     role: "Full Stack Developer",
   },
   {
@@ -154,17 +154,16 @@ export const allProjects: ProjectItem[] = [
       "A responsive portfolio website to showcase projects and skills with a modern design.",
     longDescription:
       "This portfolio website was designed to showcase my projects and skills in a visually appealing way. It features smooth animations, responsive design, and a contact form. The website was built with Next.js and styled with Tailwind CSS.",
-    image: "/ecommerce.jpg",
+    image: "/portfolio.png",
     tags: [
       "Next.js",
       "Tailwind CSS",
-      "Framer Motion",
       "TypeScript",
       "Responsive Design",
     ],
-    liveUrl: "https://kelvindev-portfolio.vercel.app/projects",
+    liveUrl: "https://kelvindev-portfolio.vercel.app",
     githubUrl: "https://github.com/Khoa1512/my-portfolio",
-    date: "September 2023",
+    date: "April 2025",
     role: "Designer & Developer",
   },
   {
