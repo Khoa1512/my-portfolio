@@ -9,12 +9,10 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import Image from 'next/image';
-import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { featuredProjects } from '@/lib/data';
-
 
 const HomeProject = () => {
   const ref = useRef(null);
@@ -57,7 +55,7 @@ const HomeProject = () => {
         >
           {featuredProjects.map((project, index) => (
             <motion.div key={index} variants={item}>
-              <Card className='h-full overflow-hidden transition-all hover:shadow-lg'>
+              <Card className='h-full flex flex-col overflow-hidden transition-all hover:shadow-lg'>
                 <div className='relative h-60 md:h-72 lg:h-60 xl:h-60 3xl:h-[440px] w-full overflow-hidden'>
                   <Image
                     src={project.image}
@@ -66,27 +64,28 @@ const HomeProject = () => {
                     className='object-cover transition-transform hover:scale-105'
                   />
                 </div>
-                <CardHeader className=' 3xl:p-10'>
-                  <CardTitle className='text-xl md:text-2xl lg:text-2xl xl:text-2xl 3xl:text-4xl'>
-                    {project.title}
-                  </CardTitle>
-                  <CardDescription className='text-base md:text-lg lg:text-lg xl:text-lg 3xl:text-2xl mt-2'>
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className='lg:px-6 xl:px-6 3xl:px-10 lg:pb-6 xl:pb-6 3xl:pb-10'>
-                  <div className='flex flex-wrap gap-2 lg:gap-2 xl:gap-2 3xl:gap-3'>
-                    {project.tags.map((tag, tagIndex) => (
-                      <span
-                        key={tagIndex}
-                        className='px-2 py-1 lg:px-2 lg:py-1 xl:px-2 xl:py-1 3xl:px-4 3xl:py-2 bg-muted text-xs md:text-sm lg:text-sm xl:text-sm 3xl:text-lg rounded-full'
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                </CardContent>
+                <div className='flex flex-col flex-grow'>
+                  <CardHeader className='min-h-[120px] md:min-h-[140px] lg:min-h-[140px] xl:min-h-[140px] 3xl:min-h-[180px]'>
+                    <CardTitle className='text-xl md:text-2xl lg:text-2xl xl:text-2xl 3xl:text-4xl'>
+                      {project.title}
+                    </CardTitle>
+                    <CardDescription className='text-sm md:text-base lg:text-base xl:text-base 3xl:text-xl mt-2 line-clamp-3'>
+                      {project.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className='pt-4 lg:px-6 xl:px-6 3xl:px-10 lg:pb-6 xl:pb-6 3xl:pb-10 mt-auto'>
+                    <div className='flex flex-wrap gap-2 lg:gap-2 xl:gap-2 3xl:gap-3'>
+                      {project.tags.map((tag, tagIndex) => (
+                        <span
+                          key={tagIndex}
+                          className='px-2 py-1 lg:px-2 lg:py-1 xl:px-2 xl:py-1 3xl:px-4 3xl:py-2 bg-muted text-xs md:text-sm lg:text-sm xl:text-sm 3xl:text-lg rounded-full'
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </div>
               </Card>
             </motion.div>
           ))}

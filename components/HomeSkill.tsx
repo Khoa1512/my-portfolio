@@ -1,7 +1,7 @@
 'use client';
 import { useInView, motion } from 'framer-motion';
 import React, { useRef } from 'react';
-import { ArrowRight, Database, Layout, Server, LucideIcon } from 'lucide-react';
+import { ArrowRight, Database, Layout, Server } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -11,30 +11,37 @@ import {
 } from '@/components/ui/card';
 import { Button } from './ui/button';
 import Link from 'next/link';
-import { featuredSkills } from '@/lib/data';
-
-
-
-// Ánh xạ tên icon sang component icon
-const iconMap: Record<string, LucideIcon> = {
-  Layout: Layout,
-  Database: Database,
-  Server: Server,
-};
 
 const HomeSkill = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  // Render icon component dựa trên tên icon
-  const renderIcon = (iconName: string) => {
-    const IconComponent = iconMap[iconName];
-    if (!IconComponent) return null;
-
-    return (
-      <IconComponent className='h-8 w-8 md:h-10 md:w-10 lg:h-10 lg:w-10 xl:h-10 xl:w-10 3xl:h-16 3xl:w-16 text-[#a855f7]' />
-    );
-  };
+  const featuredSkills = [
+    {
+      title: 'Frontend Development',
+      description: 'Creating responsive and interactive user interfaces',
+      icon: (
+        <Layout className='h-8 w-8 md:h-10 md:w-10 lg:h-10 lg:w-10 xl:h-10 xl:w-10 3xl:h-16 3xl:w-16 text-[#a855f7]' />
+      ),
+      technologies: ['React', 'Next.js', 'Tailwind CSS'],
+    },
+    {
+      title: 'Backend Development',
+      description: 'Building robust server-side applications',
+      icon: (
+        <Server className='h-8 w-8 md:h-10 md:w-10 lg:h-10 lg:w-10 xl:h-10 xl:w-10 3xl:h-16 3xl:w-16 text-[#a855f7]' />
+      ),
+      technologies: ['Node.js', 'Express', 'REST APIs'],
+    },
+    {
+      title: 'Database Management',
+      description: 'Working with various database systems',
+      icon: (
+        <Database className='h-8 w-8 md:h-10 md:w-10 lg:h-10 lg:w-10 xl:h-10 xl:w-10 3xl:h-16 3xl:w-16 text-[#a855f7]' />
+      ),
+      technologies: ['MongoDB', 'MySQL', 'PostgreSQL'],
+    },
+  ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -74,23 +81,23 @@ const HomeSkill = () => {
           {featuredSkills.map((skill, index) => (
             <motion.div key={index} variants={item}>
               <Card className='h-full transition-all hover:shadow-lg hover:-translate-y-1 p-4 md:p-6 lg:p-6 xl:p-6 3xl:p-10'>
-                <CardHeader className='pb-2 lg:pb-2 xl:pb-2 3xl:pb-6'>
+                <CardHeader className='pd-2 lg:pb-2 xl:pb-2 3xl:pb-6'>
                   <div className='mb-2 lg:mb-2 xl:mb-2 3xl:mb-6 mt-2 lg:mt-2 xl:mt-2 3xl:mt-6'>
-                    {renderIcon(skill.iconName)}
+                    {skill.icon}
                   </div>
                   <CardTitle className='text-xl md:text-2xl lg:text-2xl xl:text-2xl 3xl:text-5xl'>
                     {skill.title}
                   </CardTitle>
-                  <CardDescription className='text-base md:text-lg lg:text-lg xl:text-lg 3xl:text-2xl mt-2 lg:mt-2 xl:mt-2 3xl:mt-4'>
+                  <CardDescription className='text-base md:text-lg lg:text-lg xl:text-lg 3xl:text-2xl mt-2'>
                     {skill.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
+                <CardContent className='mt-auto'>
                   <div className='flex flex-wrap gap-2 lg:gap-2 xl:gap-2 3xl:gap-4'>
-                    {skill.technologies.slice(0, 3).map((tech, techIndex) => (
+                    {skill.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className='px-2 py-1 lg:px-2 lg:py-1 xl:px-2 xl:py-1 3xl:px-4 3xl:py-2 bg-muted text-xs md:text-sm lg:text-sm xl:text-sm 3xl:text-lg rounded-full'
+                        className='px-2 py-1 lg:px-2 lg:py-1 xl:px-2 xl:py-1 3xl:px-4 3xl:py-2 bg-muted font-semibold text-xs md:text-sm lg:text-sm xl:text-sm 3xl:text-lg rounded-full'
                       >
                         {tech}
                       </span>

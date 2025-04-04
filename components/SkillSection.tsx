@@ -83,8 +83,8 @@ const SkillSection = () => {
         animate={isInView ? 'show' : 'hidden'}
         className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-3 gap-6'
       >
-        {skills.map((skill, index) => (
-          <motion.div key={index} variants={item}>
+        {skills.map((skill) => (
+          <motion.div key={skill.id} variants={item}>
             <Card className='h-full transition-all hover:shadow-lg hover:-translate-y-1'>
               <CardHeader className='pb-2'>
                 <div className='mb-2 mt-2'>{renderIcon(skill.iconName)}</div>

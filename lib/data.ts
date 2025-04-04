@@ -1,4 +1,5 @@
 export type SkillItem = {
+  id: number;
   title: string;
   description: string;
   iconName: string;
@@ -7,6 +8,7 @@ export type SkillItem = {
 
 export const skills: SkillItem[] = [
   {
+    id: 1,
     title: "Frontend Development",
     description: "Creating responsive and interactive user interfaces",
     iconName: "Layout",
@@ -23,12 +25,14 @@ export const skills: SkillItem[] = [
     ],
   },
   {
+    id: 2,
     title: "Backend Development",
     description: "Building robust server-side applications",
     iconName: "Server",
     technologies: ["Node.js", "Express", "REST APIs", "GraphQL", "Python"],
   },
   {
+    id: 3,
     title: "Database Management",
     description: "Working with various database systems",
     iconName: "Database",
@@ -43,6 +47,7 @@ export const skills: SkillItem[] = [
     ],
   },
   {
+    id: 4,
     title: "Mobile Development",
     description: "Creating cross-platform mobile applications",
     iconName: "Smartphone",
@@ -54,18 +59,21 @@ export const skills: SkillItem[] = [
     ],
   },
   {
+    id: 5,
     title: "Programming Languages",
     description: "Proficient in multiple programming languages",
     iconName: "Code",
     technologies: ["JavaScript", "TypeScript", "Python", "Java", "SQL"],
   },
   {
+    id: 6,
     title: "Cloud Services",
     description: "Deploying and managing applications in the cloud",
     iconName: "Cloud",
     technologies: ["AWS", "Google Cloud", "Vercel", "Heroku", "Docker"],
   },
   {
+    id: 7,
     title: "Security",
     description: "Implementing security best practices",
     iconName: "Shield",
@@ -78,12 +86,14 @@ export const skills: SkillItem[] = [
     ],
   },
   {
+    id: 8,
     title: "DevOps",
     description: "Streamlining development and deployment processes",
     iconName: "Terminal",
     technologies: ["Git", "CI/CD", "GitHub Actions", "Docker"],
   },
   {
+    id: 9,
     title: "Soft Skills",
     description: "Essential non-technical abilities",
     iconName: "Lightbulb",
@@ -118,7 +128,7 @@ export const allProjects: ProjectItem[] = [
       "This project is a complete e-commerce solution built with Next.js and MongoDB. It features product listings, search functionality, shopping cart, user authentication, and Stripe payment integration. The admin dashboard allows for easy product and order management.",
     image: "/ecommerce.jpg",
     tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB", "Redux"],
-    liveUrl: "#",
+    liveUrl: "https://ecom-bice.vercel.app/",
     githubUrl: "#",
     date: "January 2023",
     role: "Full Stack Developer",
@@ -156,6 +166,48 @@ export const allProjects: ProjectItem[] = [
     githubUrl: "#",
     date: "September 2023",
     role: "Designer & Developer",
+  },
+  {
+    id: 4,
+    title: "E-Commerce Website",
+    description:
+      "A full-featured e-commerce platform with product listings, cart functionality, and payment integration.",
+    longDescription:
+      "This project is a complete e-commerce solution built with Next.js and MongoDB. It features product listings, search functionality, shopping cart, user authentication, and Stripe payment integration. The admin dashboard allows for easy product and order management.",
+    image: "/ecommerce.jpg",
+    tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB", "Redux"],
+    liveUrl: "#",
+    githubUrl: "#",
+    date: "January 2023",
+    role: "Full Stack Developer",
+  },
+  {
+    id: 5,
+    title: "E-Commerce Website",
+    description:
+      "A full-featured e-commerce platform with product listings, cart functionality, and payment integration.",
+    longDescription:
+      "This project is a complete e-commerce solution built with Next.js and MongoDB. It features product listings, search functionality, shopping cart, user authentication, and Stripe payment integration. The admin dashboard allows for easy product and order management.",
+    image: "/ecommerce.jpg",
+    tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB", "Redux"],
+    liveUrl: "#",
+    githubUrl: "#",
+    date: "January 2023",
+    role: "Full Stack Developer",
+  },
+  {
+    id: 6,
+    title: "E-Commerce Website",
+    description:
+      "A full-featured e-commerce platform with product listings, cart functionality, and payment integration.",
+    longDescription:
+      "This project is a complete e-commerce solution built with Next.js and MongoDB. It features product listings, search functionality, shopping cart, user authentication, and Stripe payment integration. The admin dashboard allows for easy product and order management.",
+    image: "/ecommerce.jpg",
+    tags: ["Next.js", "Tailwind CSS", "Stripe", "MongoDB", "Redux"],
+    liveUrl: "#",
+    githubUrl: "#",
+    date: "January 2023",
+    role: "Full Stack Developer",
   },
 ];
 
