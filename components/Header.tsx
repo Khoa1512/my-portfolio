@@ -20,15 +20,15 @@ function NavLinks({
   return (
     <div
       className={cn(
-        'flex items-center gap-6 lg:gap-6 xl:gap-6 3xl:gap-12',
+        "flex items-center gap-6 lg:gap-6 xl:gap-6 3xl:gap-12",
         className
       )}
     >
       <Link
         href='/'
         className={cn(
-          'text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]',
-          pathname === '/' && 'text-[#a855f7] text-semibold'
+          "text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]",
+          pathname === "/" && "text-[#a354ee] font-semibold"
         )}
         onClick={onClick}
       >
@@ -37,8 +37,8 @@ function NavLinks({
       <Link
         href='/about'
         className={cn(
-          'text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]',
-          pathname === '/about' && 'text-[#a855f7] font-semibold'
+          "text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]",
+          pathname === "/about" && "text-[#a354ee] font-semibold"
         )}
         onClick={onClick}
       >
@@ -47,8 +47,8 @@ function NavLinks({
       <Link
         href='/skills'
         className={cn(
-          'text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]',
-          pathname === '/skills' && 'text-[#a855f7] font-semibold'
+          "text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]",
+          pathname === "/skills" && "text-[#a354ee] font-semibold"
         )}
         onClick={onClick}
       >
@@ -57,8 +57,8 @@ function NavLinks({
       <Link
         href='/projects'
         className={cn(
-          'text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]',
-          pathname === '/projects' && 'text-[#a855f7] font-semibold'
+          "text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]",
+          pathname === "/projects" && "text-[#a354ee] font-semibold"
         )}
         onClick={onClick}
       >
@@ -67,8 +67,8 @@ function NavLinks({
       <Link
         href='/contact'
         className={cn(
-          'text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]',
-          pathname === '/contact' && 'text-[#a855f7] font-semibold'
+          "text-sm md:text-base lg:text-base xl:text-base 3xl:text-2xl font-medium transition-colors hover:text-[#a855f7]",
+          pathname === "/contact" && "text-[#a354ee] font-semibold"
         )}
         onClick={onClick}
       >
