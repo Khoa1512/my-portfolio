@@ -6,15 +6,13 @@ import {
   Code,
   Database,
   Layout,
-  Palette,
   Server,
   Smartphone,
-  Globe,
   Cloud,
   Shield,
   Terminal,
-  Cpu,
   Lightbulb,
+  LucideIcon,
 } from 'lucide-react';
 
 import {
@@ -25,100 +23,24 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 
+import { skills } from '@/lib/database/index';
+
+// Ánh xạ tên icon sang component icon
+const iconMap: Record<string, LucideIcon> = {
+  Layout: Layout,
+  Database: Database,
+  Server: Server,
+  Smartphone: Smartphone,
+  Code: Code,
+  Cloud: Cloud,
+  Shield: Shield,
+  Terminal: Terminal,
+  Lightbulb: Lightbulb,
+};
+
 const SkillSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-
-  const skills = [
-    {
-      title: 'Frontend Development',
-      description: 'Creating responsive and interactive user interfaces',
-      icon: <Layout className='h-8 w-8 text-[#a855f7]' />,
-      technologies: [
-        'HTML5',
-        'CSS3',
-        'JavaScript',
-        'React',
-        'Next.js',
-        'Tailwind CSS',
-        'Material UI',
-        'Bootstrap',
-        'SASS/SCSS',
-      ],
-    },
-    {
-      title: 'Backend Development',
-      description: 'Building robust server-side applications',
-      icon: <Server className='h-8 w-8 text-[#a855f7]' />,
-      technologies: ['Node.js', 'Express', 'REST APIs', 'GraphQL', 'Python'],
-    },
-    {
-      title: 'Database Management',
-      description: 'Working with various database systems',
-      icon: <Database className='h-8 w-8 text-[#a855f7]' />,
-      technologies: [
-        'MongoDB',
-        'MySQL',
-        'PostgreSQL',
-        'Firebase',
-        'Redis',
-        'SQLite',
-        'Supabase',
-      ],
-    },
-    {
-      title: 'Mobile Development',
-      description: 'Creating cross-platform mobile applications',
-      icon: <Smartphone className='h-8 w-8 text-[#a855f7]' />,
-      technologies: [
-        'React Native',
-        'Mobile-First Design',
-        'Progressive Web Apps',
-        'App Store Optimization',
-      ],
-    },
-    {
-      title: 'Programming Languages',
-      description: 'Proficient in multiple programming languages',
-      icon: <Code className='h-8 w-8 text-[#a855f7]' />,
-      technologies: ['JavaScript', 'TypeScript', 'Python', 'Java', 'SQL'],
-    },
-    {
-      title: 'Cloud Services',
-      description: 'Deploying and managing applications in the cloud',
-      icon: <Cloud className='h-8 w-8 text-[#a855f7]' />,
-      technologies: ['AWS', 'Google Cloud', 'Vercel', 'Heroku', 'Docker'],
-    },
-    {
-      title: 'Security',
-      description: 'Implementing security best practices',
-      icon: <Shield className='h-8 w-8 text-[#a855f7]' />,
-      technologies: [
-        'Authentication',
-        'Authorization',
-        'Data Encryption',
-        'HTTPS',
-        'Input Validation',
-      ],
-    },
-    {
-      title: 'DevOps',
-      description: 'Streamlining development and deployment processes',
-      icon: <Terminal className='h-8 w-8 text-[#a855f7]' />,
-      technologies: ['Git', 'CI/CD', 'GitHub Actions', 'Docker'],
-    },
-    {
-      title: 'Soft Skills',
-      description: 'Essential non-technical abilities',
-      icon: <Lightbulb className='h-8 w-8 text-[#a855f7]' />,
-      technologies: [
-        'Problem Solving',
-        'Communication',
-        'Teamwork',
-        'Time Management',
-      ],
-    },
-  ];
 
   const container = {
     hidden: { opacity: 0 },
@@ -135,6 +57,16 @@ const SkillSection = () => {
     show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  // Render icon component dựa trên tên icon
+  const renderIcon = (iconName: string) => {
+    const IconComponent = iconMap[iconName];
+    if (!IconComponent) return null;
+
+    return (
+      <IconComponent className='h-8 w-8 md:h-10 md:w-10 lg:h-10 lg:w-10 xl:h-10 xl:w-10 3xl:h-16 3xl:w-16 text-[#a855f7]' />
+    );
+  };
+
   return (
     <div className='py-8 xl:px-10 lg:px-10'>
       <p className='text-muted-foreground mb-8 max-w-3xl'>
@@ -145,16 +77,16 @@ const SkillSection = () => {
       </p>
       <motion.div
         ref={ref}
-        initial={{ opacity: 0.1 }}
-        animate={isInView ? { opacity: 1 } : { opacity: 0.1 }}
-        transition={{ duration: 0.3 }}
+        variants={container}
+        initial='hidden'
+        animate={isInView ? 'show' : 'hidden'}
         className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:lg:grid-cols-3 gap-6'
       >
         {skills.map((skill, index) => (
           <motion.div key={index} variants={item}>
             <Card className='h-full transition-all hover:shadow-lg hover:-translate-y-1'>
               <CardHeader className='pb-2'>
-                <div className='mb-2 mt-2'>{skill.icon}</div>
+                <div className='mb-2 mt-2'>{renderIcon(skill.iconName)}</div>
                 <CardTitle>{skill.title}</CardTitle>
                 <CardDescription>{skill.description}</CardDescription>
               </CardHeader>
