@@ -135,17 +135,17 @@ export const allProjects: ProjectItem[] = [
   },
   {
     id: 2,
-    title: "Task Management App",
+    title: "Osana Yoga Studio Website",
     description:
-      "A productivity application for managing tasks, projects, and deadlines with team collaboration features.",
+      "A modern yoga platform that allows users to explore various yoga categories and purchase suitable courses to enhance their wellness journey.",
     longDescription:
-      "This task management application helps users organize their work and collaborate with team members. It includes features like task creation, assignment, due dates, priority levels, project grouping, and real-time updates. Firebase was used for the backend to enable real-time collaboration.",
-    image: "/ecommerce.jpg",
-    tags: ["React", "Firebase", "Material UI", "Redux", "Authentication"],
-    liveUrl: "#",
+      "Yoga Bliss is a responsive web application designed to help users discover and engage with a wide range of yoga practices. The platform allows users to browse yoga categories such as Hatha, Vinyasa, Yin, and Meditation. Each category features curated courses that users can purchase and follow. The site includes user authentication via Clerk, a clean UI with shadcn/ui and TailwindCSS, and data management using Redux and MongoDB for course tracking and purchase history. Built with Next.js for a smooth and fast user experience.",
+    image: "/yoga.png",
+    tags: ["Next.js", "TailwindCSS", "shadcn/ui", "Clerk", "MongoDB", "Redux"],
+    liveUrl: "https://yoga-lyart.vercel.app/",
     githubUrl: "#",
-    date: "June 2023",
-    role: "Frontend Developer",
+    date: "February 2024",
+    role: "Fullstack Developer",
   },
   {
     id: 3,
@@ -155,12 +155,7 @@ export const allProjects: ProjectItem[] = [
     longDescription:
       "This portfolio website was designed to showcase my projects and skills in a visually appealing way. It features smooth animations, responsive design, and a contact form. The website was built with Next.js and styled with Tailwind CSS.",
     image: "/portfolio.png",
-    tags: [
-      "Next.js",
-      "Tailwind CSS",
-      "TypeScript",
-      "Responsive Design",
-    ],
+    tags: ["Next.js", "Tailwind CSS", "TypeScript", "Responsive Design"],
     liveUrl: "https://kelvindev-portfolio.vercel.app",
     githubUrl: "https://github.com/Khoa1512/my-portfolio",
     date: "April 2025",
