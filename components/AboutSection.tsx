@@ -40,11 +40,11 @@ const AboutSection = () => {
             A passionate developer focused on creating impactful experiences
           </h2>
           <p className='text-muted-foreground text-base md:text-lg lg:text-lg xl:text-lg 3xl:text-xl leading-relaxed'>
-            I'm currently a final-year Computer Science student with a passion
-            for web and mobile development. I've spent the last few years
-            building my skills across the full development stack, and I'm
-            particularly interested in creating user-friendly, responsive, and
-            accessible applications.
+            I'm currently a senior Computer Science student with a passion for
+            web and mobile development. I've spent the last few years building
+            my skills across the full development stack, and I'm particularly
+            interested in creating user-friendly, responsive, and accessible
+            applications.
           </p>
           <p className='text-muted-foreground text-base md:text-lg lg:text-lg xl:text-lg 3xl:text-xl leading-relaxed'>
             My journey in programming began when I was in high school, and I've
@@ -102,15 +102,9 @@ const AboutSection = () => {
 
           <Tabs defaultValue='Education' className='w-full pr-4'>
             <TabsList className='grid w-full grid-cols-3'>
-              <TabsTrigger value='education'>
-                Education
-              </TabsTrigger>
-              <TabsTrigger value='experience'>
-                Experience
-              </TabsTrigger>
-              <TabsTrigger value='interests'>
-                Interests
-              </TabsTrigger>
+              <TabsTrigger value='education'>Education</TabsTrigger>
+              <TabsTrigger value='experience'>Experience</TabsTrigger>
+              <TabsTrigger value='interests'>Interests</TabsTrigger>
             </TabsList>
             <TabsContent value='education' className='space-y-4 mt-4'>
               <div className='border-l-2 border-[#a855f7] pl-4 py-2'>
