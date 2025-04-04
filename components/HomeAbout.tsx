@@ -45,7 +45,7 @@ const HomeAbout = () => {
             className='pr-4 lg:pr-4 xl:pr-4 3xl:pr-8'
           >
             <h3 className='text-2xl md:text-3xl lg:text-3xl xl:text-3xl 3xl:text-6xl font-bold mb-4 md:mb-6 lg:mb-6 xl:mb-6 3xl:mb-10'>
-              A final-year student majoring in Computer Science
+              A senior student majoring in Computer Science
             </h3>
             <p className='text-muted-foreground mb-6 md:mb-8 lg:mb-8 xl:mb-8 3xl:mb-12 text-base md:text-lg lg:text-lg xl:text-lg 3xl:text-3xl'>
               I am a passionate web and mobile developer with a strong
