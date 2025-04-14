@@ -24,9 +24,6 @@ export async function POST(request: Request) {
               <strong>Email:</strong> ${email}
             </p>
             <p style="font-size: 16px; margin-bottom: 5px;">
-              <strong>Subject:</strong> ${subject}
-            </p>
-            <p style="font-size: 16px; margin-bottom: 5px;">
               <strong>Message:</strong> ${message}
             </p>
           </div>
