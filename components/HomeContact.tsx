@@ -18,14 +18,14 @@ const HomeContact = () => {
         <Mail className='h-6 w-6 md:h-6 md:w-6 lg:h-6 lg:w-6 xl:h-6 xl:w-6 3xl:h-10 3xl:w-10 text-[#a855f7]' />
       ),
       title: 'Email',
-      value: 'danggkhoaa1512@gmail.com',
+      value: 'dangkhoa1512.work@gmail.com',
     },
     {
       icon: (
         <Phone className='h-6 w-6 md:h-6 md:w-6 lg:h-6 lg:w-6 xl:h-6 xl:w-6 3xl:h-10 3xl:w-10 text-[#a855f7]' />
       ),
       title: 'Phone',
-      value: '+84 344117735',
+      value: '+84344117735',
     },
   ];
 

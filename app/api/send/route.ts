@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     // Configure email content
     const mailOptions = {
       from: "kelvintran1512.dev@gmail.com",
-      to: "danggkhoaa1512@gmail.com",
+      to: "dangkhoa1512.work@gmail.com",
       subject: subject || "New Contact Form Submission",
       text: `Name: ${name}\nEmail: ${email}\nSubject: ${subject}\nMessage: ${message}`,
       html: emailHtml,
