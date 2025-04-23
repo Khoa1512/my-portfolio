@@ -15,22 +15,22 @@ export type SocialLink = {
 // Thông tin liên hệ
 export const contactInfo: ContactInfo[] = [
   {
-    iconName: 'Mail',
-    title: 'Email',
-    value: 'danggkhoaa1512@gmail.com',
-    link: 'mailto:danggkhoaa1512@gmail.com',
+    iconName: "Mail",
+    title: "Email",
+    value: "dangkhoa1512.work@gmail.com",
+    link: "mailto:dangkhoa1512.work@gmail.com",
   },
   {
-    iconName: 'Phone',
-    title: 'Phone',
-    value: '+84344117735',
-    link: 'tel:+84344117735',
+    iconName: "Phone",
+    title: "Phone",
+    value: "+84344117735",
+    link: "tel:+84344117735",
   },
   {
-    iconName: 'MapPin',
-    title: 'Location',
-    value: 'Ho Chi Minh, Viet Nam',
-    link: '#',
+    iconName: "MapPin",
+    title: "Location",
+    value: "Ho Chi Minh, Viet Nam",
+    link: "#",
   },
 ];
 
