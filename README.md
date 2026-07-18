@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Tran Nam Dang Khoa (Kelvin)
 
-## Getting Started
+Personal developer portfolio: single-page, dark-first, **bilingual (EN/VI)**, with an
+interactive 3D tech constellation and an MDX blog.
 
-First, run the development server:
+Built with **Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · React Three
+Fiber · Framer Motion · Lenis · Server Actions**.
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
+yarn dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Other scripts: `yarn build`, `yarn start`, `yarn lint`, `yarn test`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup notes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Put your CV at `public/CV_TranNamDangKhoa.pdf` (the **Download CV** button links here).
+- Create `.env.local` with `GMAIL_APP_PASSWORD=<gmail app password>` so the contact form
+  (a Server Action) can send mail.
 
-## Learn More
+## Docs
 
-To learn more about Next.js, take a look at the following resources:
+- [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) — folder structure & design decisions.
+- [docs/INTERVIEW-NOTES.md](./docs/INTERVIEW-NOTES.md) — React/Next/TS interview Q&A (tiếng Việt).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Editing content
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All copy lives in `content/` as bilingual `{ en, vi }` objects — edit there, not in the
+components: `site.ts`, `profile.ts`, `experience.ts`, `projects.ts`, `skills.ts`,
+`dictionary.ts`, and `posts/*.mdx` for the blog.
