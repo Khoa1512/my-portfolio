@@ -1,34 +1,67 @@
-import type { Metadata } from "next";
-import type React from "react";
-import { Mona_Sans as FontSans } from "next/font/google";
-import { Content as FontHeading } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
+import type { Metadata } from 'next';
+import {
+  JetBrains_Mono,
+  Mona_Sans,
+  Space_Grotesk,
+} from 'next/font/google';
 
+import { Footer } from '@/components/layout/footer';
+import { Header } from '@/components/layout/header';
+import { AnimatedBackground } from '@/components/shared/animated-background';
+import { LanguageProvider } from '@/components/providers/language-provider';
+import { SmoothScroll } from '@/components/providers/smooth-scroll';
+import { ThemeProvider } from '@/components/providers/theme-provider';
+import { Toaster } from '@/components/ui/sonner';
+import { site } from '@/content/site';
+import { cn } from '@/lib/utils';
 
-import { cn } from "@/lib/utils";
-import "./globals.css";
+import './globals.css';
 
-import ThemeProvider from '@/components/ThemeProvider';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
-
-
-
-
-const fontSans = FontSans({
-  subsets: ["latin"],
-  variable: "--font-sans",
+// next/font self-hosts these at build time (no layout shift, no extra request).
+// Each exposes a CSS variable consumed by the @theme block in globals.css.
+const fontSans = Mona_Sans({ subsets: ['latin'], variable: '--font-sans-google' });
+const fontHeading = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-heading-google',
+});
+const fontMono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono-google',
 });
 
-const fontHeading = FontHeading({
-  subsets: ["khmer"],
-  weight: ["400", "700"],
-  variable: "--font-heading",
-});
-
-export const metadata = {
-  title: "Portfolio - Kelvin",
-  description: "A portfolio website showcasing my skills and projects",
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} — ${site.role.en}`,
+    template: `%s · ${site.name}`,
+  },
+  description:
+    'Frontend-focused fullstack developer building real-time web & mobile products: live tracking maps, streaming dashboards and clean, scalable frontends with React, Next.js and TypeScript.',
+  keywords: [
+    'Tran Nam Dang Khoa',
+    'Fullstack Developer',
+    'Frontend Developer',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Real-time',
+    'Portfolio',
+  ],
+  authors: [{ name: site.name, url: site.url }],
+  openGraph: {
+    type: 'website',
+    url: site.url,
+    title: `${site.name} — ${site.role.en}`,
+    description:
+      'Real-time web & mobile products with React, Next.js and TypeScript.',
+    siteName: site.name,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${site.name} — ${site.role.en}`,
+    description:
+      'Real-time web & mobile products with React, Next.js and TypeScript.',
+  },
 };
 
 export default function RootLayout({
@@ -37,26 +70,35 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    // suppressHydrationWarning: next-themes sets the `class` on <html> before
+    // React hydrates, which would otherwise trip a mismatch warning.
+    <html lang="en" suppressHydrationWarning>
       <body
+        suppressHydrationWarning
         className={cn(
-          "min-h-screen gradient-bg font-sans antialiased",
+          'min-h-screen font-sans',
           fontSans.variable,
-          fontHeading.variable
+          fontHeading.variable,
+          fontMono.variable,
         )}
       >
         <ThemeProvider
-          attribute='class'
-          defaultTheme='light'
-          enableSystem
+          attribute="class"
+          forcedTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
-        <div className='relative flex min-h-screen flex-col'>
-          <Header />
-          <div className='flex-1'>{children}</div>
-          <Toaster/>
-          <Footer />
-        </div>
+          <LanguageProvider>
+            <SmoothScroll>
+              <AnimatedBackground />
+              <div className="relative flex min-h-screen flex-col">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </div>
+              <Toaster richColors position="top-center" />
+            </SmoothScroll>
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>
