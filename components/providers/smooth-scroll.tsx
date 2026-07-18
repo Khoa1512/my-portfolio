@@ -21,12 +21,15 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
     const handleAnchorClick = (event: MouseEvent) => {
       const anchor = (event.target as HTMLElement).closest<HTMLAnchorElement>(
-        'a[href^="#"]',
+        'a[href^="#"], a[href^="/#"]',
       );
       const href = anchor?.getAttribute('href');
-      if (!href || href === '#') return;
+      if (!href) return;
 
-      const target = document.querySelector(href);
+      const hash = href.startsWith('/') ? href.slice(1) : href;
+      if (!hash || hash === '#') return;
+
+      const target = document.querySelector(hash);
       if (!target) return;
 
       event.preventDefault();

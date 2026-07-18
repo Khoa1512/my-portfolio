@@ -40,12 +40,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggle = useCallback(() => {
-    setLangState((prev) => {
-      const next: Lang = prev === 'en' ? 'vi' : 'en';
-      localStorage.setItem(STORAGE_KEY, next);
-      return next;
-    });
-  }, []);
+    const next: Lang = lang === 'en' ? 'vi' : 'en';
+    localStorage.setItem(STORAGE_KEY, next);
+    setLangState(next);
+  }, [lang]);
 
   const value = useMemo(
     () => ({ lang, setLang, toggle }),

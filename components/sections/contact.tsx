@@ -37,11 +37,15 @@ export function Contact() {
   });
 
   async function onSubmit(values: ContactInput) {
-    const result = await sendContactMessage(values);
-    if (result.ok) {
-      toast.success(t(dict.formSuccess, lang));
-      form.reset();
-    } else {
+    try {
+      const result = await sendContactMessage(values);
+      if (result.ok) {
+        toast.success(t(dict.formSuccess, lang));
+        form.reset();
+      } else {
+        toast.error(t(dict.formError, lang));
+      }
+    } catch {
       toast.error(t(dict.formError, lang));
     }
   }

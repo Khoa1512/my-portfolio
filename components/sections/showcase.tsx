@@ -46,7 +46,7 @@ export function Showcase() {
             className={cn(
               'relative rounded-xl px-4 py-2 text-sm font-medium transition-colors sm:px-6',
               tab === item.id
-                ? 'text-white'
+                ? 'text-black'
                 : 'text-muted-foreground hover:text-foreground',
             )}
           >
