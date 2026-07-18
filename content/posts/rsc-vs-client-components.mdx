@@ -1,0 +1,33 @@
+---
+title: 'RSC vs Client Components: a practical mental model'
+description: 'When to reach for a Server Component and when a component truly needs to run in the browser.'
+date: '2026-06-10'
+tags: ['Next.js', 'React', 'Architecture']
+---
+
+In the App Router, every component is a **Server Component** by default. You opt into
+the client with `'use client'`. The trick is knowing where the line is.
+
+## Default to the server
+
+Server Components render on the server and ship **zero JS** for themselves. Use them
+for anything that's mostly data + markup: layouts, content, lists, static sections.
+They can read the filesystem or a database directly — no API layer needed.
+
+## Go client only when you need the browser
+
+Add `'use client'` when a component needs:
+
+- **State / effects** — `useState`, `useEffect`, refs.
+- **Browser APIs** — `localStorage`, `matchMedia`, `IntersectionObserver`.
+- **Event handlers** — `onClick`, `onChange`, form interactivity.
+
+## Push the boundary down
+
+The mistake is marking a whole page `'use client'` because one button is interactive.
+Instead, keep the page a Server Component and extract just the interactive leaf into a
+client component. Server work stays on the server; the client bundle stays small.
+
+This portfolio follows exactly that: the home page is a Server Component that reads
+blog posts from disk, while interactive bits — theme toggle, language switch, the
+contact form — are small client islands.

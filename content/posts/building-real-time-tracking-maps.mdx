@@ -1,0 +1,34 @@
+---
+title: 'Keeping real-time maps smooth under unstable GPS'
+description: 'How adaptive buffering and position smoothing keep live tracking readable when telemetry is noisy.'
+date: '2026-05-20'
+tags: ['Real-time', 'Maps', 'WebSocket']
+---
+
+Live tracking looks easy until the GPS signal gets noisy. Raw telemetry arrives at
+irregular intervals, sometimes jumps, and occasionally stalls. If you bind markers
+directly to incoming packets, the map jitters and teleports.
+
+## The problem
+
+A naive pipeline does `socket.on('telemetry', p => marker.setPosition(p))`. Under
+unstable GPS you get:
+
+- **Jitter** — tiny position deltas every frame.
+- **Teleports** — a late packet snaps the marker across the screen.
+- **Stalls** — no packets for a second, then a burst.
+
+## Adaptive buffering
+
+Instead of rendering each packet immediately, buffer briefly and replay on a fixed
+render clock. The buffer size adapts to the observed packet rate: larger when the
+stream is bursty, smaller when it's steady — trading a little latency for stability.
+
+## Position smoothing
+
+Between known points, interpolate toward the next target rather than snapping. A
+simple critically-damped easing makes movement feel continuous without lagging far
+behind reality.
+
+The result: a map that stays readable for operators even when the underlying signal
+is far from perfect.
